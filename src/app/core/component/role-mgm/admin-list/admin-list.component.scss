@@ -1,0 +1,8 @@
+.stop-stretching {
+    width: 1%;
+    white-space: nowrap;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: rgb(29 78 216);
+}

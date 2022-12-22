@@ -1,0 +1,54 @@
+<div class="p-3">
+    <p class="tracking-widest text-center">Quản lý trạng thái giao dịch</p>
+    <mat-divider></mat-divider>
+    <div class="mt-2 flex justify-center items-center">
+       <form [formGroup]="selectForm" class="w-1/4 mr-4">
+            <mat-form-field appearance="outline"  floatLabel="always" class="w-full">
+                <mat-label>Chọn loại</mat-label>
+                <mat-select formControlName="selectControl" (selectionChange)="getType($event.value)">
+                <mat-option *ngFor="let transaction of listTransactions" [value]="transaction">   
+                    {{transaction}}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+       </form>
+        <div>
+            <form *ngIf="type === 'Cộng tác viên'" [formGroup]="CTVForm" class="w-1/4 mr-4" (ngSubmit)="getDetailCTV()">
+                <mat-form-field  appearance="outline" floatLabel="always">
+                    <mat-label>Nhập mã giao dịch</mat-label>
+                    <input matInput formControlName="id">
+                    <button matSuffix mat-icon-button type="submit">
+                        <mat-icon>arrow_right_alt</mat-icon>
+                    </button>
+                </mat-form-field>
+            </form>
+            <form *ngIf="type === 'Gói nâng cấp'" [formGroup]="UpgradeForm" class="w-1/4 mr-4" (ngSubmit)="getDetailUpgrade()">
+                <mat-form-field  appearance="outline"  floatLabel="always">
+                    <mat-label>Nhập mã giao dịch</mat-label>
+                    <input matInput formControlName="id">
+                    <button matSuffix mat-icon-button type="submit">
+                        <mat-icon>arrow_right_alt</mat-icon>
+                    </button>
+                </mat-form-field>
+            </form>
+        </div>
+        <mat-form-field *ngIf="isShowDetail" appearance="outline" class="w-1/4 mr-4" floatLabel="always">
+            <mat-label>Trạng thái hiện tại</mat-label>
+            <input matInput readonly [value]="isLockedLetter">
+        </mat-form-field>
+        <mat-form-field *ngIf="isShowDetail && isLocked === true" appearance="outline" class="w-1/4 mr-4" floatLabel="always">
+            <mat-label>Lock bởi</mat-label>
+            <input matInput readonly [value]="lockedBy">
+        </mat-form-field>
+        <div *ngIf="isShowDetail">
+            <button *ngIf="isLocked" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 
+            focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center
+             dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" (click)="unLockTransaction()">UnLock</button>
+             <button *ngIf="!isLocked" type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none
+              focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center
+            dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" (click)="lockTransaction()">Lock</button>
+        
+        </div>
+    </div>  
+</div>
+

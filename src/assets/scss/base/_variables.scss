@@ -1,0 +1,15 @@
+:root {
+  // variable in here
+  --font-size-12: 12px;
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+  --font-size-18: 18px;
+  --font-size-20: 20px;
+  --font-size-22: 22px;
+  --font-size-28: 28px;
+}
+//---or---
+//font-color
+$color-text: var(--text-primary-color);
+$color-primary:#ffffff;
+

@@ -1,0 +1,10 @@
+.search-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0 16px
+}
+
+.row-customize {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 2fr 1fr 1fr 1fr;
+}

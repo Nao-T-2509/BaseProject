@@ -1,0 +1,20 @@
+@import "./base/variables";
+@import "./base/typography";
+@import "./base/reset";
+@import "./components/footer.scss";
+@import "./components/header.scss";
+
+html{
+  // font-family: 'Roboto', sans-serif;
+  // font-family: 'Quicksand', sans-serif;
+  font-family: 'Lexend', sans-serif;
+}
+.poiter{
+  cursor: pointer;
+}
+.color-primary{
+  color: $color-primary;
+}
+.outline-none{
+  outline: none;
+}

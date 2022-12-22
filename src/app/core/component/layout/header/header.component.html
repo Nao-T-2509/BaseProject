@@ -1,0 +1,23 @@
+<nav class="w-full flex justify-between py-2 px-4 bg-gray-50" style="height:3rem">
+  <img src="./../../../../assets/images/Logo-01.png" alt="" style="border-radius: 50%;">
+  <div class="h-full flex items-center">
+    <p style="margin-bottom: 0px;">Welcome <span class="fw-bold">admin</span></p>
+    <img class="w-[2.5rem] h-[2.5rem] object-cover rounded-[50%] cursor-pointer ml-4" [matMenuTriggerFor]="menu"
+      [src]="annonimousAvatar" alt="avatar">
+  </div>
+
+  <mat-menu #menu="matMenu" class="mt-1">
+    <button mat-menu-item>
+      <mat-icon>person</mat-icon>
+      <span>Trang cá nhân</span>
+    </button>
+    <button mat-menu-item (click)="open()">
+      <mat-icon>key</mat-icon>
+      <span>Đổi mật khẩu</span>
+    </button>
+    <button mat-menu-item (click)="clear()">
+      <mat-icon>logout</mat-icon>
+      <span>Đăng xuất</span>
+    </button>
+  </mat-menu>
+</nav>

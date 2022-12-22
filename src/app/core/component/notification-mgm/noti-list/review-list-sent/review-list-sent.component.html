@@ -1,0 +1,123 @@
+<div mat-dialog-title class="mb-2 text-xl flex flex-row justify-between items-end">
+    <div>Xem trước danh sách người nhận thông báo</div>
+</div>
+<mat-divider></mat-divider>
+<!-- table -->
+<div mat-dialog-content class="sm:rounded-lg mt-4" style="height: 100%">
+    <table class="table-auto w-full text-xs text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="py-2 px-2 stop-stretching">
+                    Chỉnh sửa
+                </th>
+                <th scope="col" class="py-2 px-2 stop-stretching">
+                    STT
+                </th>
+                <th scope="col" class="py-2 px-2 stop-stretching">
+                    Username
+                </th>
+                <th scope="col" class="py-2 px-2 stop-stretching">
+                    Họ tên
+                </th>
+                <th scope="col" class="py-2 px-2 stop-stretching">
+                    Đối tượng
+                </th>
+                <th scope="col" class="py-2 px-2 stop-stretching">
+                    Độ tuổi
+                </th>
+                <th scope="col" class="py-2 px-2 stop-stretching">
+                    Giới tính
+                </th>
+                <th scope="col" class="py-2 px-2 stop-stretching">
+                    Tỉnh thành
+                </th>
+                <th scope="col" class="py-2 px-2 stop-stretching">
+                    Mã giới thiệu
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listReview, index as i"
+                class="cursor-pointer bg-white border-b dark:bg-gray-800 dark:border-gray-700 
+                hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="py-4 px-6 stop-stretching">
+                    <mat-checkbox class="example-margin"></mat-checkbox>
+                </td>
+                <td class="py-2 px-2 stop-stretching">
+                    {{i+1}}
+                </td>
+                <td class="py-2 px-2 stop-stretching">
+                    {{item.login || 'No-data'}}
+                </td>
+                <td class="py-2 px-2 stop-stretching">
+                    {{item.fullname || 'No-data'}}
+                </td>
+                <td class="py-2 px-2 stop-stretching">
+                    {{item.role || 'No-data'}}
+                </td>
+                <td class="py-2 px-2 stop-stretching">
+                    {{item.age || 'No-data'}}
+                </td>
+                <td class="py-2 px-2 stop-stretching">
+                    {{item.gender}}
+                </td>
+                <td class="py-2 px-2 stop-stretching">
+                    {{item.city || 'No-data'}}
+                </td>
+                <td class="py-2 px-2 stop-stretching">
+                    {{item.referrentCode || 'No-data'}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav class="flex justify-between items-center pt-4" aria-label="Table navigation">
+        <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
+            <span class="fw-bold" style="margin-right: 5px;">Hiển thị</span>
+                <input type="number" value='0' style="width: 70px; border: unset; padding: unset; padding-left: 20px;"
+                    min="1" max="{{totalCount}}" value="{{size}}" [(ngModel)]="size" (change)="changeSize()"> trên {{totalCount}}
+            <span class="fw-bold" >kết quả</span>
+        </span>
+        <ul class="inline-flex items-center -space-x-px">
+            <li *ngIf="page != 1 && array.length > 0">
+                <a  (click)="previousPage()"
+                    class="block py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <span class="sr-only">Previous</span>
+                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </li>
+            <li *ngFor="let i of array ">
+                <a routerLinkActive="fold-bold" (click)="page = i; searchListReview(); pageActive = i" [class.text-blue-600]="page === i" [class.font-bold]="page === i" class="cursor-pointer py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{i}}</a>
+            </li>
+            <li *ngIf="page != array.length && array.length > 0">
+                <a  (click)="nextPage()"
+                    class="block py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <span class="sr-only">Next</span>
+                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<!-- button -->
+<div mat-dialog-actions class="justify-end">
+    <button mat-dialog-close="" type="button" class="flex flex-row items-center text-blue-700 hover:text-white border border-blue-700
+    hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium 
+    rounded-lg text-sm px-3 py-2 text-center mr-1 dark:border-blue-500 
+    dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 
+    dark:focus:ring-blue-800">Hủy</button>
+    <button type="submit" class="text-white bg-blue-700 
+    hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium 
+    rounded-lg text-sm px-3 py-2 dark:bg-blue-600 
+    dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+    Lưu</button>
+</div>

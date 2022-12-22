@@ -1,0 +1,237 @@
+<div class="mb-2 text-xl flex flex-row justify-between items-end">
+    <div>Tạo thông báo</div>
+</div>
+<mat-divider></mat-divider>
+<form [formGroup]="createNotiForm" (ngSubmit)="createNoti()">
+    <div class="accordion">
+        <div class="accordion-heading">
+            <div class="accordion-label">
+                Đối tượng nhận thông báo
+            </div>
+        </div>
+        <div class="accordion-main">
+            <div class="accordion-content">
+                <div class="accordion-item">
+                    <div class="item-heading">
+                        Loại thông báo
+                    </div>
+                    <div class="item-select">
+                        <mat-radio-group formControlName="notificationTypeId" class="flex flex-col gap-y-2">
+                            <mat-radio-button *ngFor="let type of listType" [value]="type.id">
+                                {{type.description}}
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="item-heading">
+                        Loại User
+                    </div>
+                    <div class="item-select">
+                        <mat-checkbox class="example-margin">Member</mat-checkbox>
+                        <mat-checkbox class="example-margin">Cộng tác viên</mat-checkbox>
+                        <mat-checkbox class="example-margin">Đại lý</mat-checkbox>
+                        <mat-checkbox class="example-margin">Tổng đại lý</mat-checkbox>
+                        <mat-checkbox class="example-margin">Tổng đại lý đặc biệt</mat-checkbox>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="item-heading">
+                        Giới tính
+                    </div>
+                    <div class="item-select">
+                        <mat-checkbox class="example-margin">Nam</mat-checkbox>
+                        <mat-checkbox class="example-margin">Nữ</mat-checkbox>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="item-heading">
+                        Độ tuổi
+                    </div>
+                    <div class="item-select">
+                        <mat-checkbox class="example-margin">18 - 30</mat-checkbox>
+                        <mat-checkbox class="example-margin">30 - 40</mat-checkbox>
+                        <mat-checkbox class="example-margin">40 - 50</mat-checkbox>
+                        <mat-checkbox class="example-margin">Lớn hơn 50</mat-checkbox>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Tỉnh</mat-label>
+                        <mat-select multiple>
+                          <mat-option *ngFor="let city of cities" [value]="city">{{city}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+            </div>
+            <div class="flex justify-between mt-4">
+                <div class="flex">
+                    <label for="inputFile" type="button" class="flex flex-row items-center text-blue-700 hover:text-white border border-blue-700
+                    hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium 
+                    rounded-lg text-sm px-2 py-1 text-center mr-1 dark:border-blue-500 
+                    dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 
+                    dark:focus:ring-blue-800">
+                    <mat-icon class="mr-1 w-3 h-3">attach_file</mat-icon>
+                    <div>Chọn file import</div>
+                </label>
+                <input (change)="importFile($event)" id="inputFile" type="file" class="border pl-1 rounded-sm">
+                <div class="border px-2 rounded-sm flex items-center ">
+                    <div>
+                        {{fileName || 'Chưa nhập file'}}
+                    </div>
+                </div>
+                <!-- <button type="button" class="ml-2 text-blue-700 hover:text-white border border-blue-700
+                 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium 
+                 rounded-lg text-sm px-3 py-2 text-center mr-2 dark:border-blue-500 
+                 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 
+                 dark:focus:ring-blue-800">Xử lý
+                </button> -->
+                </div>
+                <button (click)="reviewListSent()" type="button" class="text-white bg-blue-700 
+                hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium 
+                rounded-lg text-sm px-2 py-1 dark:bg-blue-600 
+                dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                Danh sách người nhận</button>
+            </div>
+        </div>
+        <div>
+            
+        </div>
+    </div>
+    <div class="mt-8 rounded-lg overflow-hidden">
+        <div class="accordion-heading">
+            <div class="accordion-label">
+                Nội dung thông báo
+            </div>
+        </div>
+        <div class="px-8 py-4 border rounded-b-lg">
+            <div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Chọn ngôn ngữ</mat-label>
+                        <mat-select [(ngModel)]="languages" [ngModelOptions]="{standalone: true}">
+                          <mat-option value="vietnamese">Tiếng Việt</mat-option>
+                          <!-- <mat-option value="english">Tiếng Anh</mat-option>
+                          <mat-option value="all">Cả hai</mat-option> -->
+                        </mat-select>
+                    </mat-form-field>     
+                </div>
+                <div class="flex justify-between gap-x-8">
+                    <div *ngIf="languages === 'vietnamese' || languages === 'all'" class="flex flex-col w-full">
+                        <mat-form-field class="w-full mt-4" appearance="outline" floatLabel="always">
+                            <mat-label>Tiêu đề Tiếng Việt</mat-label>
+                            <input matInput formControlName="title">
+                        </mat-form-field>
+                        <mat-hint class="text-red-500" *ngIf="createNotiForm.get('title')?.touched && !createNotiForm.get('title')?.valid">Không được để trống</mat-hint>
+                        <!-- <mat-form-field class="w-full mt-4" appearance="outline" floatLabel="always">
+                            <mat-label>Mô tả Tiếng Việt</mat-label>
+                            <input matInput>
+                        </mat-form-field> -->
+                        <mat-form-field class="w-full mt-4" appearance="outline" floatLabel="always">
+                            <mat-label>Nội dung Tiếng Việt</mat-label>
+                            <textarea matInput class="h-36" formControlName="body"></textarea>
+                        </mat-form-field>
+                        <mat-hint class="text-red-500" *ngIf="createNotiForm.get('body')?.touched && !createNotiForm.get('body')?.valid">Không được để trống</mat-hint>
+                    </div>
+                    <!-- <div *ngIf="languages === 'english' || languages === 'all'" class="flex flex-col w-full">
+                        <mat-form-field class="w-full mt-4" appearance="outline" floatLabel="always">
+                            <mat-label>Tiêu đề Tiếng Anh</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-hint *ngIf="createNotiForm.get('title')?.touched && !createNotiForm.get('title')?.valid">Không được để trống</mat-hint> -->
+                        <!-- <mat-form-field class="w-full mt-4" appearance="outline" floatLabel="always">
+                            <mat-label>Mô tả Tiếng Anh</mat-label>
+                            <input matInput>
+                        </mat-form-field> -->
+                        <!-- <mat-form-field class="w-full mt-4" appearance="outline" floatLabel="always">
+                            <mat-label>Nội dung Tiếng Anh</mat-label>
+                            <textarea matInput class="h-36"></textarea>
+                            <mat-hint *ngIf="createNotiForm.get('body')?.touched && !createNotiForm.get('body')?.valid">Không được để trống</mat-hint>
+                        </mat-form-field>
+                    </div> -->
+                </div>
+                <div class="grid gap-x-8 mt-4 grid-cols-2">
+                    <div class="flex flex-col">
+                        <mat-label class="ml-2 font-medium mb-4">Link Video
+                            <span class="text-[10px] text-gray-500">
+                                *Vui lòng nhập đúng link video
+                            </span>
+                        </mat-label>
+                        <mat-form-field class="w-full" appearance="outline">
+                            <input matInput formControlName="linkVideo">
+                        </mat-form-field>
+                        <!-- <iframe
+                            width="100%"
+                            height="auto"
+                            src="https://www.youtube.com/embed/Y8Wp3dafaMQ"
+                            srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style>
+                            <a href=https://www.youtube.com/embed/Y8Wp3dafaMQ?autoplay=1>
+                            <img src=https://img.youtube.com/vi/Y8Wp3dafaMQ/hqdefault.jpg>
+                            <span>▶</span></a>"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe> -->
+                        <!-- <mat-hint *ngIf="createNotiForm.get('linkVideo')?.touched && !createNotiForm.get('linkVideo')?.valid" class="text-xs text-red-500">Vui lòng nhập đúng định dạng link URL</mat-hint> -->
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-center mb-2">
+                            <mat-label class="ml-2 font-medium">Chọn hình ảnh (tối đa 3 hình ảnh)</mat-label>
+                            
+                        </div>       
+                        <div class="grid grid-cols-3 gap-x-2">
+                            <div class="cursor-pointer relative box uploadImg bg-slate-100 mt-5 mb-5 w-full h-[150px] flex justify-center items-center rounded-lg box-border overflow-hidden">
+                                <img [src]="imgSrc1 | safe" alt="" class="absolute w-full object-cover">
+                                <i *ngIf="!imgSrc1" class="fa-solid fa-circle-plus text-2xl text-gray-600"></i>
+                                <input *ngIf="!imgSrc1" class="upload-file" type="file" id="img1" (change)="uploadImage($event); onUploadImage($event, 1)">
+                                <i *ngIf="imgSrc1" (click)="imgSrc1 = ''; removeSelect(0)" class="fa-regular fa-circle-xmark absolute text-2xl top-0 right-1 z-20 text-gray-600 cursor-pointer" id="imgProduct1"></i>
+                            </div>
+                            <div class="cursor-pointer relative box uploadImg bg-slate-100 mt-5 mb-5 w-full h-[150px] flex justify-center items-center rounded-lg box-border overflow-hidden">
+                                <img [src]="imgSrc2 | safe" alt="" class="absolute w-full object-cover">
+                                <i *ngIf="!imgSrc2" class="fa-solid fa-circle-plus text-2xl text-gray-600"></i>
+                                <input *ngIf="!imgSrc2" class="upload-file" type="file" id="img2" (change)="uploadImage($event); onUploadImage($event, 2)">
+                                <i *ngIf="imgSrc2" (click)="imgSrc2 = ''; removeSelect(1)" class="fa-regular fa-circle-xmark absolute text-2xl top-0 right-1 z-20 text-gray-600 cursor-pointer" id="imgProduct1"></i>
+                            </div>
+                            <div class="cursor-pointer relative box uploadImg bg-slate-100 mt-5 mb-5 w-full h-[150px] flex justify-center items-center rounded-lg box-border overflow-hidden">
+                                <img [src]="imgSrc3 | safe" alt="" class="absolute w-full object-cover">
+                                <i *ngIf="!imgSrc3" class="fa-solid fa-circle-plus text-2xl text-gray-600"></i>
+                                <input *ngIf="!imgSrc3" class="upload-file" type="file" id="img3" (change)="uploadImage($event); onUploadImage($event, 3)">
+                                <i *ngIf="imgSrc3" (click)="imgSrc3 = ''; removeSelect(2)" class="fa-regular fa-circle-xmark absolute text-2xl top-0 right-1 z-20 text-gray-600 cursor-pointer" id="imgProduct1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-8 px-8 py-4 rounded-lg flex flex-col">
+        <mat-radio-group class="flex gap-x-12 self-start items-center" formControlName="typeOfNoti" (change)="getStatusNoti()">
+            <mat-radio-button value="Nháp">Lưu nháp</mat-radio-button>
+            <mat-radio-button value="Gửi ngay">Gửi ngay</mat-radio-button>
+            <div class="flex items-center">
+                <mat-radio-button value="Đặt lịch gửi" class="mr-2">Đặt lịch gửi</mat-radio-button>
+                <div>
+                    <mat-form-field appearance="outline">
+                      <input [readonly]="!isIntend" matInput [ngxMatDatetimePicker]="picker1" 
+                      placeholder="Choose a date" formControlName="intendTime">
+                      <mat-datepicker-toggle [disabled]="!isIntend" matSuffix [for]="$any(picker1)"></mat-datepicker-toggle>
+                      <ngx-mat-datetime-picker #picker1></ngx-mat-datetime-picker>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-radio-group>
+        <div class="self-start">
+            <button (click)="previewNotiOnScreen()" type="button" [disabled]="!createNotiForm.valid" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 
+            focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 
+             dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 
+            dark:focus:ring-blue-800">Xem trước</button>
+            <button type="submit" [disabled]="!createNotiForm.valid" class="text-white mr-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none
+             focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600
+              dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tạo thông báo</button>
+              <button mat-dialog-close type="button" class="focus:outline-none text-white bg-red-700 
+              hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg 
+              text-sm px-5 py-2.5 mr-2 dark:bg-red-600 dark:hover:bg-red-700 
+              dark:focus:ring-red-900">Hủy</button>
+        </div>
+    </div>
+</form>

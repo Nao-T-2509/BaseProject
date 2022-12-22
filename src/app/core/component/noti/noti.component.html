@@ -1,0 +1,7 @@
+<div class="text w-fit text-center flex flex-row items-center">
+    <i *ngIf="data.status === true" class="fa-solid fa-circle-check text-green-500 mr-2"></i>
+    <i *ngIf="data.status === false" class="fa-solid fa-circle-info text-yellow-400 mr-2"></i>
+    <span>
+      {{data.message}}
+    </span>
+</div>

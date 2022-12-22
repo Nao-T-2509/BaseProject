@@ -1,0 +1,56 @@
+<div *ngIf="data.type === 'View'">
+    <div class="preview-container">
+        <div class="preview-heading">
+            Xem trước thông báo
+        </div>
+        <i mat-dialog-close class="fa-solid fa-circle-xmark preview-close"></i>
+    </div>
+    <div class="preview-content">
+        <div class="preview-title">
+            {{data.item.title}}
+        </div>
+        <div class="preview-sentDate">
+            <i class="preview-clock fa-solid fa-clock"></i>
+            <div class="preview-time">
+                {{timeSent}} 
+            </div>
+        </div>
+        <div class="preview-body">
+            {{data.item.body}}
+        </div>
+        <div *ngIf="videoLink != null" class="preview-video">
+            <iframe [src]="videoLink | safe" class="w-full aspect-video ... my-5"></iframe>
+        </div>
+        <div class="preview-images">
+            <img *ngFor="let img of listImages, index as i" [src]="img || ''" alt="">
+        </div>
+    </div>
+</div>
+<div *ngIf="data.type === 'Create'">
+    <div class="preview-container">
+        <div class="preview-heading">
+            Xem trước thông báo
+        </div>
+        <i mat-dialog-close class="fa-solid fa-circle-xmark preview-close"></i>
+    </div>
+    <div class="preview-content">
+        <div class="preview-title">
+            {{data.item.title}}
+        </div>
+        <div class="preview-sentDate">
+            <i class="preview-clock fa-solid fa-clock"></i>
+            <div class="preview-time">
+                {{timeSent}} 
+            </div>
+        </div>
+        <div class="preview-body">
+            {{data.item.body}}
+        </div>
+        <div *ngIf="videoLink != null" class="preview-video">
+            <iframe [src]="videoLink | safe" class="w-full aspect-video ... my-5"></iframe>
+        </div>
+        <div class="preview-images">
+            <img *ngFor="let img of listImages, index as i" [src]="img || ''" alt="">
+        </div>
+    </div>
+</div>

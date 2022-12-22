@@ -1,0 +1,46 @@
+.preview {
+    &-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &-heading {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    &-close {
+        font-size: 20px;
+        color: red;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.5;
+        }
+    } 
+    &-title {
+        padding-top: 45px;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+    }
+    &-sentDate {
+        color: #0EAF8F;
+        display: flex;
+        gap: 0 8px;
+        align-items: center;
+        margin-top: 12px;
+    }
+    &-body {
+        margin-top: 16px;
+        font-size: 12px;
+        line-height: 200%;
+        letter-spacing: 0.05em;
+    }
+    &-images {
+        margin-top: 24px;
+        & img {
+            width: 100%;
+            object-fit: cover;
+            margin: 16px auto;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+::ng-deep .shadow-md {
+    --tw-shadow: none;
+    --tw-shadow-colored: none;
+    box-shadow: none;
+}
+
+.stop-stretching {
+    width: 1%;
+    white-space: nowrap;
+}
+
+.button {
+    height: 28px;
+    padding: 3px 15px 3px 15px
+}

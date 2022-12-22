@@ -1,0 +1,184 @@
+<p class="text-xl text-center font-normal">Quản lý danh sách User</p>
+<mat-divider></mat-divider>
+
+<!-- search -->
+<div data-active-classes="bg-blue-100 dark:bg-gray-800 text-blue-600 dark:text-white" class="mt-4">
+    <div (click)="isShowSearch = !isShowSearch">
+        <button type="button" class="text-sm flex items-center justify-between w-full p-3 font-medium text-left text-gray-500 border border-gray-200 rounded-sm focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800">
+            <div class="flex items-center">
+                <mat-icon>search</mat-icon>
+                <span class="text-center ml-3">Thông tin tìm kiếm</span>
+            </div>
+            <mat-icon *ngIf="isShowSearch" class="w-6 h-6 rotate-180 shrink-0">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="!isShowSearch" class="w-6 h-6 rotate-180 shrink-0">keyboard_arrow_up</mat-icon>
+        </button>
+    </div>
+    <div *ngIf="isShowSearch" class="text-sm">
+        <div class="p-5 font-light dark:border-gray-700 dark:bg-gray-900">
+            <form (ngSubmit)="getSearchBody()" [formGroup]="searchForm">
+                <div class="flex justify-between"> 
+                    <mat-form-field appearance="outline" class="mr-4 w-1/4" floatLabel="always">
+                        <mat-label >Username</mat-label>
+                        <input matInput value="null" formControlName="username">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mr-4 w-1/4" floatLabel="always">
+                        <mat-label>Họ và tên</mat-label>
+                        <input matInput formControlName="fullname">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mr-4 w-1/4" floatLabel="always">
+                        <mat-label>User Role</mat-label>
+                        <mat-select formControlName="role">
+                          <mat-option *ngFor="let role of rolelist" [value]="role">
+                            {{role}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field> 
+                    <mat-form-field appearance="outline" class="w-1/4" floatLabel="always">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
+                    </mat-form-field>
+                </div>
+                <div class="flex justify-between">
+                    <mat-form-field appearance="outline" class="mr-4 w-1/4" floatLabel="always">
+                        <mat-label >Số điện thoại</mat-label>
+                        <input matInput formControlName="phone">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mr-4 w-1/4" floatLabel="always">
+                        <mat-label>Ngày tạo</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="createDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-datepicker-toggle matSuffix (click)="clearDatePicker()">
+                            <mat-icon matDatepickerToggleIcon>clear</mat-icon>
+                        </mat-datepicker-toggle>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mr-4 w-1/4" floatLabel="always">
+                        <mat-label>Trạng thái</mat-label>
+                        <mat-select formControlName="isActived">
+                            <mat-option *ngFor="let status of listStatus" [value]="status.value">
+                                {{status.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="w-1/4 h-1/2 mt-1 flex flex-row seft-end">
+                        <button type="submit" (click)="searchListMember()" style="background-color: rgb(29 78 216);" class="grow  mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Tìm kiếm
+                        </button>
+                        <button type="submit" (click)="clearSearchData()" class="grow text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800">
+                            Hủy bỏ
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Tạo user button -->
+<div class="w-52 ml-5 mb-4 mt-4" (click)="addUser()">
+    <button style="background-color: rgb(29 78 216);" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <mat-icon class="mr-2 ml-1 w-5 h-5">add</mat-icon>
+        Tạo user
+    </button>
+</div>
+
+<!-- Table -->
+<div class="relative shadow-md sm:rounded-lg" style="font-size: 12px;">
+    <table class="table-auto w-full text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Username
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Họ và tên
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    User role
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Email
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Số điện thoại
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Ngày tạo
+                </th>
+                <th scope="col" class="py-3 px-6 text-center stop-stretching">
+                    Trạng thái
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of userList" (click)="viewUpdate(item.name)"
+                class="cursor-pointer bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="py-4 px-6 stop-stretching">
+                    {{item.name}}
+                </td>
+                <td class="py-4 px-6 stop-stretching">
+                    {{item.fullname}}
+                </td>
+                <td class="py-4 px-6 flex flex-col stop-stretching">
+                    <p *ngFor="let role of item.role">
+                        {{role}}
+                    </p>
+                </td>
+                <td class="py-4 px-6 stop-stretching">
+                    {{item.email}}
+                </td>
+                <td class="py-4 px-6 stop-stretching">
+                    {{item.phone}}
+                </td>
+                <td class="py-4 px-6 stop-stretching">
+                    {{item.date}}
+                </td>
+                <td class="py-4 px-6 text-center" (click)="stopPropagation($event)">
+                    <mat-checkbox [disabled]="true" style="cursor: not-allowed" [checked]="item.status"></mat-checkbox>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot class="text-sm border-y border-gray-200" align="center" *ngIf="nodata">
+            <tr>
+               <td colspan="12" class="py-3">No data</td>
+            </tr>
+        </tfoot>
+    </table>
+    <nav class="flex justify-between items-center pt-4" aria-label="Table navigation">
+        <span class="font-normal text-gray-500 dark:text-gray-400">
+            <span class="fw-bold" style="margin-right: 5px;">Hiển thị</span>
+                <input type="number" value='0' style="width: 70px; border: unset; padding: unset; padding-left: 20px;"
+                    min="1" max="{{totalCount}}" value="{{size}}" [(ngModel)]="size" (change)="changeSize()"> trên {{totalCount}}
+            <span class="fw-bold" >kết quả</span>
+        </span>
+        <ul class="inline-flex items-center -space-x-px">
+            <li *ngIf="page != 1 && array.length > 0">
+                <a  (click)="previousPage()"
+                    class="block py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <span class="sr-only">Previous</span>
+                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </li>
+            <li *ngFor="let i of array ">
+                <a routerLinkActive="fold-bold" (click)="getDetailPage(i); pageActive = i" [class.text-blue-600]="page === i" [class.font-bold]="page === i" class="cursor-pointer py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{i}}</a>
+            </li>
+            <li *ngIf="page != array.length && array.length > 0">
+                <a  (click)="nextPage()"
+                    class="block py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <span class="sr-only">Next</span>
+                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

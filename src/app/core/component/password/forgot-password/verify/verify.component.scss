@@ -1,0 +1,28 @@
+:host ::ng-deep .mat-raised-button {
+    margin: 10px;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.face {
+    backface-visibility: hidden;
+}
+
+.card {
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    transform: rotateY(180deg);
+    animation: flip 1s;
+}
+
+@keyframes flip {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(180deg);
+    }
+}

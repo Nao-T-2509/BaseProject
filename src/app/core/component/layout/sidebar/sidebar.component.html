@@ -1,0 +1,53 @@
+<div class="p-2 rounded text-sm bg-gray-50">
+  <div (click)="item = 'item'" *ngIf="item == 'last'"
+    class="cursor-pointer flex flex-row h-10 hover:bg-opacity-10 hover:bg-black w-10 pl-3 mb-4 my-1 py-2 rounded-md items-center poiter">
+    <i class="fa-solid mr-4 fa-bars fa-lg"></i>
+  </div>
+  <div (click)="ChangeStatus()" *ngIf="item == 'item'"
+    class="cursor-pointer flex flex-row h-10 hover:bg-opacity-10 hover:bg-black w-10 pl-3 mb-4 ml-4 my-1 py-2 rounded-md items-center poiter">
+    <i class="fa-solid mr-4 fa-bars fa-lg"></i>
+  </div>
+  <ul (click)="item = 'item'">
+    <li [ngClass]="item"
+      class="cursor-pointer flex flex-row w-full h-10 hover:bg-opacity-10 hover:bg-black py-3 rounded-md items-center justify-center poiter"
+      (click)="usermenu=!usermenu">
+      <i class="fa-solid px-2 fa-circle-user fa-lg"></i>
+      <span *ngIf="item == 'item'" class="w-4/5">Quản lý nhân viên</span>
+    </li>
+    <ul *ngIf="usermenu" class="h-max w-48 ml-10">
+      <li>
+        <div [routerLink]="['./userMGM/userList']" routerLinkActive="active"
+          class="cursor-pointer flex items-center p-2 pl-11 w-full text-gray-900 rounded-lg transition duration-75 group hover:bg-opacity-10 hover:bg-black dark:text-white dark:hover:bg-gray-700">
+          Danh sách</div>
+      </li>
+      <li>
+        <div [routerLink]="['./userMGM/customer']" routerLinkActive="active"
+          class="cursor-pointer flex items-center p-2 pl-11 w-full text-gray-900 rounded-lg transition duration-75 group hover:bg-opacity-10 hover:bg-black dark:text-white dark:hover:bg-gray-700">
+          Yêu cầu khách hàng</div>
+      </li>
+    </ul>
+    <li [ngClass]="item"
+      class="cursor-pointer flex flex-row w-full h-10 hover:bg-opacity-10 hover:bg-black py-3 rounded-md items-center justify-center poiter"
+      (click)="rolemenu=!rolemenu">
+      <i class="fa-solid fa-person-circle-question fa-lg px-2"></i>
+      <span *ngIf="item == 'item'" class="w-4/5">Quản lý vai trò</span>
+    </li>
+    <ul *ngIf="rolemenu" class="h-max w-48 ml-10">
+      <li>
+        <div [routerLink]="['./role/adminList']" routerLinkActive="active"
+          class="cursor-pointer flex items-center p-2 pl-11 w-full text-gray-900 rounded-lg transition duration-75 group hover:bg-opacity-10 hover:bg-black dark:text-white dark:hover:bg-gray-700">
+          Danh sách vai trò ADMIN</div>
+      </li>
+    </ul>
+    <li [ngClass]="item" [routerLink]="['/admin/pages/unlockTransaction']" routerLinkActive="active"
+      class="cursor-pointer flex flex-row w-full h-10 hover:bg-opacity-10 hover:bg-black py-3 rounded-md items-center justify-center poiter">
+      <i class="fa-solid fa-lock-open px-2 fa-lg"></i>
+      <span *ngIf="item == 'item'" class="w-4/5">Mở khóa giao dịch</span>
+    </li>
+    <li [ngClass]="item" [routerLink]="['/admin/pages/noti/notiList']" routerLinkActive="active"
+      class="cursor-pointer flex flex-row w-full h-10 hover:bg-opacity-10 hover:bg-black py-3 rounded-md items-center justify-center poiter">
+      <i class="fa-solid fa-envelope px-2 fa-lg"></i>
+      <span *ngIf="item == 'item'" class="w-4/5">Quản lý thông báo</span>
+    </li>
+  </ul>
+</div>

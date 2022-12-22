@@ -1,0 +1,43 @@
+.header{
+  background: #e6e8ea;
+  color: var(--text-primary-color);
+  .logo-text{
+    color: var(--logo-text);
+  }
+  select{
+    background-color: var(--secondary-color);
+  }
+  .dropdown{
+    background-color: var(--secondary-color);
+  }
+}
+.avatar{
+  border-radius: 100%;
+}
+.icon-position-center{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10%;
+}
+.dropdown{
+  position: absolute;
+  right: 1rem;
+  top: 90%;
+  border-radius: 5px;
+  background-color: rgb(224, 224, 224);
+  font-weight: 500;
+  padding: 1rem;
+  li{
+    // background-color: #fff;
+    cursor: pointer;
+  }
+  li:not(:last-child){
+    margin-bottom: 1rem
+
+  }
+  li:hover{
+    color: $color-primary;
+    cursor: pointer;
+  }
+}

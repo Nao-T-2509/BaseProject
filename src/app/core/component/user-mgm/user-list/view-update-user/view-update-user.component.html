@@ -1,0 +1,84 @@
+<div class="mb-2 text-xl flex flex-row justify-between items-end">
+    <div *ngIf="!isEditMode">Thông tin chi tiết user</div>
+    <div *ngIf="isEditMode">Chỉnh sửa thông tin user</div>
+    <div class="flex">
+        <button *ngIf="isEditMode && active == 'Active'" type="button"
+        (click)="DeActiveUser()" class="text-blue-700 hover:text-white border border-blue-700 
+        hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
+        font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 
+        dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800">Deactive</button>
+        <button *ngIf="isEditMode && active == 'Deactive'" type="button"
+        (click)="ActiveUser()" class="text-blue-700 hover:text-white border border-blue-700 
+        hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
+        font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 
+        dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800">Active</button>
+        <button type="button" style="background-color: rgb(29 78 216);" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 
+        focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 
+        dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" *ngIf="isEditMode">
+        Reset Password</button>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<form action="" #userdetail="ngForm" (ngSubmit)="UserDetail(userdetail.value)">
+    <div class="mt-4 flex flex-col">
+        <div class="flex grow">
+            <mat-form-field class="mr-4 grow w-1/3" appearance="outline">
+                <mat-label>Họ và tên</mat-label>
+                <input matInput [disabled]="!isEditMode" [value]="user?.firstName" name="firstName" ngModel>
+            </mat-form-field>
+            <mat-form-field class="grow w-1/3" appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput [disabled]="!isEditMode" [value]="user?.login" name="login" ngModel >
+            </mat-form-field>
+        </div>
+        <div class="flex grow">
+            <mat-form-field class="mr-4 grow w-1/3" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput [disabled]="!isEditMode" [value]="user?.email" name="email" ngModel >
+            </mat-form-field>
+            <mat-form-field class="grow w-1/3" appearance="outline">
+                <mat-label>Số điện thoại</mat-label>
+                <input matInput [disabled]="!isEditMode" [value]="user?.phoneNumber" name="phoneNumber" ngModel>
+            </mat-form-field>
+        </div>
+        <div class="flex grow">
+            <mat-form-field class="mr-4 grow w-1/3" appearance="outline">
+                <mat-label>Trạng thái</mat-label>
+                <input disabled matInput [value]="active">
+            </mat-form-field>
+            <mat-form-field class="grow w-1/3" appearance="outline">
+                <mat-label>User Role</mat-label>
+                <input disabled *ngIf="!isEditMode" matInput [value]="authorities[0]">
+                <mat-select *ngIf="isEditMode" [disabled]="!isEditMode" multiple [(value)]="authorities[0]">
+                    <mat-option *ngFor="let role of rolelist" [value]="role">{{role}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="flex grow">
+            <mat-form-field class="mr-4 grow w-1/3" appearance="outline">
+                <mat-label>Ngày tạo</mat-label>
+                <input matInput [value]="datepipe.transform(this.user?.createdDate, 'hh:mm a dd-MM-yyyy')" [disabled]="true">
+            </mat-form-field>
+            <mat-form-field class="grow w-1/3" appearance="outline">
+                <mat-label>Ngày cập nhật</mat-label>
+                <input matInput [value]="this.datepipe.transform(this.user?.lastModifiedDate, 'hh:mm a dd-MM-yyyy')" [disabled]="true">
+            </mat-form-field>
+        </div>
+        <div class="grow w-full text-right">
+            <button type="button" class="text-green-700 hover:text-white border
+            border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none 
+            focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2
+             dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 
+             dark:focus:ring-green-800" *ngIf="!isEditMode" (click)="isEditMode = true">Sửa</button>
+            <button type="submit" class="text-green-700 hover:text-white border
+            border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none 
+            focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2
+            dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 
+            dark:focus:ring-green-800" *ngIf="isEditMode">Save</button>
+            <button mat-dialog-close type="button" class="text-red-700 hover:text-white border border-red-700
+            hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg
+            text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white
+            dark:hover:bg-red-600 dark:focus:ring-red-900">Đóng</button>
+        </div>
+    </div>
+</form>

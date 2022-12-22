@@ -1,0 +1,66 @@
+<section class="h-screen" style="background-color: #1d243d; min-height: 600px; position: relative;">
+    <div class="py-5 h-full">
+        <div class="row flex justify-center items-center h-full">
+            <div style="width: 40%">
+                <div class="flex justify-center items-center w-full" style="border-radius: 1rem;">
+                    <div class="py-6 px-8 text-black w-4/5" style="font-size: small; background-color: rgb( 33, 41, 66 ); border-top: 10px solid #79a6fe; border-bottom: 10px solid #8BD17C; border-radius: 5px;
+                box-shadow: 1px 1px 108.8px 19.2px rgb(25,31,53); z-index: 99999; min-width: 450px;">
+                        <form [formGroup]="loginForm" (ngSubmit)="sendLoginInfor()">
+                            <div class="flex items-center justify-center mb-2 pt-5">
+                                <span class="text-2xl mb-0"><span style="color: #5c6bc0;">Admin</span>
+                                    <span style="color: #dfdeee;">Dasboard</span></span>
+                            </div>
+
+                            <h5 class="fw-normal mb-5 pb-3 flex justify-center"
+                                style="letter-spacing: 1px; color: #495599;">Bạn chưa
+                                có tài khoản? <a href="#!" style="color: #dfdeee;">&nbsp;Đăng ký tại đây</a></h5>
+                            <div class="flex flex-col items-center w-full">
+                                <div class="flex flex-col w-8/12 mb-4">
+                                    <label class="mb-2" style="color: #495599;">Tài khoản</label>
+                                    <input type="email" class="h-8 rounded-md p-2" formControlName="username">
+                                </div>
+
+                                <div class="flex flex-col w-8/12 mb-2">
+                                    <label class="mb-2" style="color: #495599;">Mật khẩu</label>
+                                    <input type="password" class="h-8 rounded-md p-2" formControlName="password">
+                                    <label *ngIf="!check_pass" class="fw-bold mb-3 mt-2 text-red-500">Nhập
+                                        sai
+                                        tài khoản hoặc mật khẩu</label>
+                                </div>
+
+                                <div class="mb-4 flex items-center w-8/12 justify-end">
+                                    <div (click)="forgotpassword()"><a class="small text-muted"><span
+                                                style="color: #5260b0; cursor: pointer;">Quên mật
+                                                khẩu?</span></a></div>
+                                </div>
+                            </div>
+                            <div class="pt-1 mb-3 flex items-center justify-center w-full">
+                                <button class="btn1 w-7/12" type="submit" *ngIf="!login"
+                                    style="background: #7f5feb;">Đăng
+                                    nhập</button>
+                                <button class="btn1 w-7/12" type="button" *ngIf="login" style="background: #69e8e4;">
+                                    <i class="fa-solid fa-spinner text-lg spin text-black"></i>
+                                </button>
+                            </div>
+                            <div class="pt-2 mb-2 flex items-center justify-center" style="color: #5260b0;">
+                                Hoặc đăng nhập bằng
+                            </div>
+                        </form>
+                        <div class="pt-2 mb-3 flex items-center justify-center">
+                            <button class="w-5/12 flex items-center justify-center btn1 bg-blue-600"
+                                style="height: 38px; font-size: small; margin-right: 20px;" type="button">
+                                <i class="fa-brands mr-2 fa-facebook-f" aria-hidden="true"></i>
+                                <span>Facebook</span>
+                            </button>
+                            <button class="w-5/12 flex items-center justify-center btn1 bg-red-600"
+                                style="height: 38px; font-size: small;" type="button">
+                                <i class="fa-brands mr-2 fa-google" aria-hidden="true"></i>
+                                <span>Google</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
