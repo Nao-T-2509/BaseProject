@@ -1,6 +1,6 @@
 
 <div class="mb-2 text-xl flex flex-row justify-between items-end">
-    <div>Chi tiết yêu cầu khách hàng</div>
+    <div>Chi tiết yêu cầu người dùng</div>
 </div>
 <mat-divider></mat-divider>
 <mat-divider></mat-divider>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="mt-5 mb-4">
-                <label for="message" class="block mb-2 text-base font-medium text-gray-900 dark:text-gray-400">Yêu cầu của khách hàng</label>
+                <label for="message" class="block mb-2 text-base font-medium text-gray-900 dark:text-gray-400">Câu hỏi người dùng</label>
                 <textarea disabled id="message-customer" rows="4" class="block p-2.5 w-full text-base text-gray-900 bg-gray-50 rounded-lg 
                 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600
                  dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >{{requestDetail.description}}</textarea>
@@ -50,7 +50,7 @@
         <mat-card>
             <form (ngSubmit)="updateRequest()" [formGroup]="adminResponeForm">
                 <div>
-                    <label for="message" class="block mb-2 text-base font-medium text-gray-900 dark:text-gray-400">Ghi chú cho khách hàng</label>
+                    <label for="message" class="block mb-2 text-base font-medium text-gray-900 dark:text-gray-400">Ghi chú</label>
                     <textarea id="message" rows="4" class="block p-2.5 w-full text-base text-gray-900 bg-gray-50 rounded-lg 
                     border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600
                      dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
@@ -61,7 +61,7 @@
                     <textarea id="message" rows="4" class="block p-2.5 w-full text-base text-gray-900 bg-gray-50 rounded-lg 
                     border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600
                      dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                     placeholder="VIP, thân thiết, quay lại"></textarea>
+                     placeholder="#tags"></textarea>
                 </div>
                 <div class="flex mt-4 justify-center">
                     <button mat-dialog-close type="button" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 

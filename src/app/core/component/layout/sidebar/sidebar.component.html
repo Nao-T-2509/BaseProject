@@ -11,19 +11,21 @@
     <li [ngClass]="item"
       class="cursor-pointer flex flex-row w-full h-10 hover:bg-opacity-10 hover:bg-black py-3 rounded-md items-center justify-center poiter"
       (click)="usermenu=!usermenu">
-      <i class="fa-solid px-2 fa-circle-user fa-lg"></i>
-      <span *ngIf="item == 'item'" class="w-4/5">Quản lý nhân viên</span>
+      <i class="fa-solid px-2 fa-users fa-lg"></i>
+      <span *ngIf="item == 'item'" class="w-4/5">Cộng đồng</span>
     </li>
     <ul *ngIf="usermenu" class="h-max w-48 ml-10">
       <li>
         <div [routerLink]="['./userMGM/userList']" routerLinkActive="active"
           class="cursor-pointer flex items-center p-2 pl-11 w-full text-gray-900 rounded-lg transition duration-75 group hover:bg-opacity-10 hover:bg-black dark:text-white dark:hover:bg-gray-700">
-          Danh sách</div>
+          <i class="fa-solid px-2 fa-circle-user fa-lg"></i>
+          Người dùng</div>
       </li>
       <li>
         <div [routerLink]="['./userMGM/customer']" routerLinkActive="active"
           class="cursor-pointer flex items-center p-2 pl-11 w-full text-gray-900 rounded-lg transition duration-75 group hover:bg-opacity-10 hover:bg-black dark:text-white dark:hover:bg-gray-700">
-          Yêu cầu khách hàng</div>
+          <i class="fa-solid px-2 fa-circle-question fa-lg"></i>
+          Câu hỏi</div>
       </li>
     </ul>
     <li [ngClass]="item"
@@ -39,15 +41,15 @@
           Danh sách vai trò ADMIN</div>
       </li>
     </ul>
-    <li [ngClass]="item" [routerLink]="['/admin/pages/unlockTransaction']" routerLinkActive="active"
+    <!-- <li [ngClass]="item" [routerLink]="['/admin/pages/unlockTransaction']" routerLinkActive="active"
       class="cursor-pointer flex flex-row w-full h-10 hover:bg-opacity-10 hover:bg-black py-3 rounded-md items-center justify-center poiter">
       <i class="fa-solid fa-lock-open px-2 fa-lg"></i>
       <span *ngIf="item == 'item'" class="w-4/5">Mở khóa giao dịch</span>
-    </li>
-    <li [ngClass]="item" [routerLink]="['/admin/pages/noti/notiList']" routerLinkActive="active"
+    </li> -->
+    <!-- <li [ngClass]="item" [routerLink]="['/admin/pages/noti/notiList']" routerLinkActive="active"
       class="cursor-pointer flex flex-row w-full h-10 hover:bg-opacity-10 hover:bg-black py-3 rounded-md items-center justify-center poiter">
       <i class="fa-solid fa-envelope px-2 fa-lg"></i>
       <span *ngIf="item == 'item'" class="w-4/5">Quản lý thông báo</span>
-    </li>
+    </li> -->
   </ul>
 </div>

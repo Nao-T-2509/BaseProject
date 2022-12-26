@@ -1,0 +1,330 @@
+{
+    "blogs" : [
+        {
+            "_id": {
+                "$oid": "123"
+              },
+              "maTaiKhoan": "laytheoID",
+              "tieuDe": "Cách đăng nhập SSO Keycloak với ReactJs và Typescript",
+              "tag": [
+                ""
+              ],
+              "noiDung": "Single Sign-On (SSO) là một kỹ thuật xác thực người dùng cho phép người dùng đăng nhập vào nhiều ứng dụng khác nhau mà không cần phải nhập tên đăng nhập và mật khẩu cho mỗi ứng dụng. SSO giúp người dùng dễ dàng quản lý tài khoản và giảm thiểu số lần người dùng phải nhập thông tin đăng nhập.\n\nKeycloak là một hệ thống quản lý xác thực và quyền truy cập (Identity and Access Management - IAM) miễn phí và mã nguồn mở, cho phép bạn xây dựng các giải pháp SSO cho các ứng dụng web và mobile. Keycloak cung cấp một giao diện người dùng để quản lý người dùng, tài khoản và quyền truy cập, và có thể tích hợp với các hệ thống xác thực khác nhau như LDAP, SAML, v.v. Keycloak cũng hỗ trợ các tính năng bảo mật như bảo mật mật khẩu, xác thực hai yếu tố, v.v.\n\nĐể sử dụng SSO (Single Sign-On) Keycloak trong React, bạn có thể thực hiện các bước sau:",
+              "ngayDang": "15-10-2022 10:25",
+              "luotXem": 100,
+              "baoCao": 0,
+              "luotThich": 52,
+              "baiDuocDuyet": true,
+              "binhLuan": [
+                {
+                  "noidung": "nếu mình muốn generic cho lệnh query đồng thời chuyển nó sang promise thì phải viết làm bạn ơi? Hiện tại bị lỗi",
+                  "hinhAnh": "",
+                  "luotThich": 0,
+                  "maTaiKhoan": "63a491000360b205a5893320"
+                }
+            ]
+        },
+        {
+            "_id": {
+                "$oid": "123123"
+              },
+              "maTaiKhoan": "laytheoID",
+              "tieuDe": "Cách đăng nhập SSO Keycloak với ReactJs và Typescript",
+              "tag": [
+                ""
+              ],
+              "noiDung": "Single Sign-On (SSO) là một kỹ thuật xác thực người dùng cho phép người dùng đăng nhập vào nhiều ứng dụng khác nhau mà không cần phải nhập tên đăng nhập và mật khẩu cho mỗi ứng dụng. SSO giúp người dùng dễ dàng quản lý tài khoản và giảm thiểu số lần người dùng phải nhập thông tin đăng nhập.\n\nKeycloak là một hệ thống quản lý xác thực và quyền truy cập (Identity and Access Management - IAM) miễn phí và mã nguồn mở, cho phép bạn xây dựng các giải pháp SSO cho các ứng dụng web và mobile. Keycloak cung cấp một giao diện người dùng để quản lý người dùng, tài khoản và quyền truy cập, và có thể tích hợp với các hệ thống xác thực khác nhau như LDAP, SAML, v.v. Keycloak cũng hỗ trợ các tính năng bảo mật như bảo mật mật khẩu, xác thực hai yếu tố, v.v.\n\nĐể sử dụng SSO (Single Sign-On) Keycloak trong React, bạn có thể thực hiện các bước sau:",
+              "ngayDang": "15-10-2022 10:25",
+              "luotXem": 100,
+              "baoCao": 0,
+              "luotThich": 52,
+              "baiDuocDuyet": true,
+              "binhLuan": [
+                {
+                  "noidung": "nếu mình muốn generic cho lệnh query đồng thời chuyển nó sang promise thì phải viết làm bạn ơi? Hiện tại bị lỗi",
+                  "hinhAnh": "",
+                  "luotThich": 0,
+                  "maTaiKhoan": "63a491000360b205a5893320"
+                }
+            ]
+        },
+        {
+            "_id": {
+                "$oid": "1231231"
+              },
+              "maTaiKhoan": "laytheoID",
+              "tieuDe": "Cách đăng nhập SSO Keycloak với ReactJs và Typescript",
+              "tag": [
+                ""
+              ],
+              "noiDung": "Single Sign-On (SSO) là một kỹ thuật xác thực người dùng cho phép người dùng đăng nhập vào nhiều ứng dụng khác nhau mà không cần phải nhập tên đăng nhập và mật khẩu cho mỗi ứng dụng. SSO giúp người dùng dễ dàng quản lý tài khoản và giảm thiểu số lần người dùng phải nhập thông tin đăng nhập.\n\nKeycloak là một hệ thống quản lý xác thực và quyền truy cập (Identity and Access Management - IAM) miễn phí và mã nguồn mở, cho phép bạn xây dựng các giải pháp SSO cho các ứng dụng web và mobile. Keycloak cung cấp một giao diện người dùng để quản lý người dùng, tài khoản và quyền truy cập, và có thể tích hợp với các hệ thống xác thực khác nhau như LDAP, SAML, v.v. Keycloak cũng hỗ trợ các tính năng bảo mật như bảo mật mật khẩu, xác thực hai yếu tố, v.v.\n\nĐể sử dụng SSO (Single Sign-On) Keycloak trong React, bạn có thể thực hiện các bước sau:",
+              "ngayDang": "15-10-2022 10:25",
+              "luotXem": 100,
+              "baoCao": 0,
+              "luotThich": 52,
+              "baiDuocDuyet": true,
+              "binhLuan": [
+                {
+                  "noidung": "nếu mình muốn generic cho lệnh query đồng thời chuyển nó sang promise thì phải viết làm bạn ơi? Hiện tại bị lỗi",
+                  "hinhAnh": "",
+                  "luotThich": 0,
+                  "maTaiKhoan": "63a491000360b205a5893320"
+                }
+            ]
+        }
+    ],
+
+    "questions" : [
+        {
+              "id": "123",
+              "maTaiKhoan": "layTheoMaTaiKhoan",
+              "tieuDe": "Tối ưu hóa thời gian thu thập kết nối cơ sở dữ liệu oracle khi khởi động Spring",
+              "tag": [
+                "sptring",
+                "boost"
+              ],
+              "noiDung": "Tôi có một ứng dụng khởi động mùa xuân chạy một số dịch vụ và sử dụng cơ sở dữ liệu tiên tri. Cơ sở dữ liệu được duy trì đúng cách, các chỉ mục cũng được thêm vào và khi thực thi các câu lệnh SQL trực tiếp trên SQL Developer, nó sẽ được thực thi sau một phần nghìn giây.",
+              "hinhAnh": "",
+              "ngayDang": "2022-24-12 15:21",
+              "luotXem": "10",
+              "luotThich": "2",
+              "baoCao": 12,
+              "danhSachBinhLuan": [
+                {
+                  "noiDung": "Như đã nói trong tài liệu, hãy đặt server.port làm thuộc tính hệ thống bằng cách sử dụng tùy chọn dòng lệnh thành jvm -Dserver.port=8090 hoặc thêm application.properties trong /src/main/resources/ với",
+                  "ngayBinhLuan": "24-12-2022 15:40",
+                  "hinhDanh": "",
+                  "luotThich": 10,
+                  "maTaiKhoan": "63a83915bea5d55887810c47"
+                },
+                {
+                  "noiDung": "Có hai cách chính để thay đổi cổng trong Tomcat nhúng trong Ứng dụng khởi động mùa xuân.\n\nSửa đổi ứng dụng.properties\n\nTrước tiên, bạn có thể thử tệp application.properties trong thư mục/resource:",
+                  "ngayBinhLuan": "25-12-2022 15:55",
+                  "hinhAnh": "",
+                  "luotThich ": 0,
+                  "maTaikhoan": "63a491000360b205a5893320"
+                }
+              ]
+            },
+            {
+              "id": "1234",
+              "maTaiKhoan": "layTheoMaTaiKhoan",
+              "tieuDe": "Tối ưu hóa thời gian thu thập kết nối cơ sở dữ liệu oracle khi khởi động Spring",
+              "tag": [
+                "sptring",
+                "boost"
+              ],
+              "noiDung": "Tôi có một ứng dụng khởi động mùa xuân chạy một số dịch vụ và sử dụng cơ sở dữ liệu tiên tri. Cơ sở dữ liệu được duy trì đúng cách, các chỉ mục cũng được thêm vào và khi thực thi các câu lệnh SQL trực tiếp trên SQL Developer, nó sẽ được thực thi sau một phần nghìn giây.",
+              "hinhAnh": "",
+              "ngayDang": "2022-24-12 15:21",
+              "luotXem": "10",
+              "luotThich": "2",
+              "baoCao": 1,
+              "danhSachBinhLuan": [
+                {
+                  "noiDung": "Như đã nói trong tài liệu, hãy đặt server.port làm thuộc tính hệ thống bằng cách sử dụng tùy chọn dòng lệnh thành jvm -Dserver.port=8090 hoặc thêm application.properties trong /src/main/resources/ với",
+                  "ngayBinhLuan": "23-12-2022 15:40",
+                  "luotThich": 10,
+                  "maTaiKhoan": "63a83915bea5d55887810c47",
+                  "hinhAnh": ""
+                },
+                {
+                  "noiDung": "Có hai cách chính để thay đổi cổng trong Tomcat nhúng trong Ứng dụng khởi động mùa xuân.\n\nSửa đổi ứng dụng.properties\n\nTrước tiên, bạn có thể thử tệp application.properties trong thư mục/resource:",
+                  "ngayBinhLuan": "25-12-2022 15:55",
+                  "hinhAnh": "",
+                  "luotThich ": 0,
+                  "maTaiKhoan": "63a83817bea5d55887810c43"
+                }
+            ]
+        }
+    ],
+
+    "contacts" : [
+        {
+            "_id": {
+                "$oid": "qẻqerqe"
+              },
+              "maTaiKhoan": "laytheoIdTaiKhoan",
+              "hoVaten": "Can Anh Toan",
+              "noiDungLienHe": [
+                {
+                  "laNguoidung": true,
+                  "noiDung": "Admin cho em hoi cau nay voi",
+                  "thoiGian": "24-12-2022 17:27"
+                },
+                {
+                  "laNguoidung": false,
+                  "noiDung": "Em cu hoi di",
+                  "thoiGian": "24-12-2022 17:30"
+                }
+              ]
+        },
+        {
+            "_id": {
+                "$oid": "qẻqer"
+              },
+              "maTaiKhoan": "laytheoIdTaiKhoan",
+              "hoVaten": "Can Anh Toan",
+              "noiDungLienHe": [
+                {
+                  "laNguoidung": true,
+                  "noiDung": "Admin cho em hoi cau nay voi",
+                  "thoiGian": "24-12-2022 17:27"
+                },
+                {
+                  "laNguoidung": false,
+                  "noiDung": "Em cu hoi di",
+                  "thoiGian": "24-12-2022 17:30"
+                }
+              ]
+        },
+        {
+            "_id": {
+                "$oid": "qẻqereq"
+              },
+              "maTaiKhoan": "laytheoIdTaiKhoan",
+              "hoVaten": "Can Anh Toan",
+              "noiDungLienHe": [
+                {
+                  "laNguoidung": true,
+                  "noiDung": "Admin cho em hoi cau nay voi",
+                  "thoiGian": "24-12-2022 17:27"
+                },
+                {
+                  "laNguoidung": false,
+                  "noiDung": "Em cu hoi di",
+                  "thoiGian": "24-12-2022 17:30"
+                }
+              ]
+        }
+    ],
+
+    "quangcao" : [
+        {
+            "_id": {
+                "$oid": "rqerqe"
+              },
+              "hinhAnh": "",
+              "ngayDang": ""
+        },
+        {
+            "_id": {
+                "$oid": "qẻ"
+              },
+              "hinhAnh": "",
+              "ngayDang": ""
+        },
+        {
+            "_id": {
+                "$oid": "qẻqe"
+              },
+              "hinhAnh": "",
+              "ngayDang": ""
+        }
+    ],
+
+    "taikhoan" : [
+        {
+            "_id": {
+                "$id": "639dc4b0d345c8c0fe9e555a"
+              },
+              "tenDangNhap": "HungLe",
+              "matKhau": "123456",
+              "hoVaTen": "le Nguyen Hung",
+              "anhDaiDien": "123456",
+              "moTa": "Xin chào các bạn, mình tên là Hưng, mình 22 tuổi. Mình đến từ thủ đô Hà Nội. Mình tham gia vào lớp học này là bị cuốn hút bởi màu sắc từ những bức tranh. Mình thích vẽ, thích nghệ thuật và thích những thứ bay bổng. Mình mong trong thời gian tới sẽ được các bạn giúp đỡ.\n\n",
+              "laNguoiDung": false,
+              "danhSachCauHoiTheoDoi": [
+                {
+                  "maCauHoi": "63a6aca80360b205a5893322",
+                  "tieuDe": "Document was modified in the background or it longer exists. Do you wish to continue and possibly overwrite new changes?"
+                }
+              ],
+              "maLienHe": "132465"
+            },
+            {
+              "_id": {
+                "$id": "63a1ec07d345c8c0fe9e555d"
+              },
+              "tenDangNhap": "DoMinhTHu",
+              "matKhau": "123456",
+              "hoVaTen": "Do Minh Thu",
+              "anhDaiDien": "123456",
+              "moTa": "Tôi tên là Thư",
+              "laNguoiDung": false,
+              "danhSachCauHoiTheoDoi": [
+                {
+                  "maCauHoi": "63a6c90b0360b205a5893323",
+                  "tieuDe": "Làm cách nào tôi có thể thay đổi màu sắc hình ảnh trong iOS và WatchKit"
+                },
+                {
+                  "maCauHoi": "63a6aca80360b205a5893322",
+                  "tieuDe": "Không tìm thấy tệp React Clippy"
+                }
+              ],
+              "maLienHe": "8888"
+            },
+            {
+              "_id": {
+                "$id": "63a491000360b205a5893320"
+              },
+              "tenDangNhap": "VuThaiDuong",
+              "matKhau": "123456",
+              "hoVaTen": "Vu Thai Duong",
+              "anhDaiDien": "123456",
+              "moTa": "Minh ten la Duong",
+              "laNguoiDung": true,
+              "danhSachCauHoiTheoDoi": [
+                {
+                  "maCauHoi": "63a6c90b0360b205a5893323",
+                  "tieuDe": "Cách thay đổi màu văn bản trên Thanh trạng thái trong iOS"
+                },
+                {
+                  "maCauHoi": "63a6aca80360b205a5893322",
+                  "tieuDe": "Tại sao Python không có chức năng ký hiệu?"
+                }
+              ],
+              "maLienHe": "132465"
+            },
+            {
+              "_id": {
+                "$id": "63a83817bea5d55887810c43"
+              },
+              "tenDangNhap": "leenguynhoong0@gmail.com",
+              "matKhau": "123456",
+              "hoVaTen": "Can Anh Toan",
+              "anhDaiDien": "123456",
+              "moTa": "Toan",
+              "laNguoiDung": true,
+              "danhSachCauHoiTheoDoi": [
+                {
+                  "maCauHoi": "63a6c90b0360b205a5893323",
+                  "tieuDe": "Cách thay đổi màu văn bản trên Thanh trạng thái trong iOS"
+                },
+                {
+                  "maCauHoi": "63a6aca80360b205a5893322",
+                  "tieuDe": "Tại sao Python không có chức năng ký hiệu?"
+                }
+              ],
+              "maLienHe": "132465"
+            },
+            {
+              "_id": {
+                "$id": "63a83915bea5d55887810c47"
+              },
+              "tenDangNhap": "maivanhieu@gmail.com",
+              "matKhau": "123456",
+              "hoVaTen": "Hieu",
+              "anhDaiDien": "123456",
+              "moTa": "Tôi tên là Mai Văn Hiểu",
+              "laNguoiDung": true,
+              "danhSachCauHoiTheoDoi": [
+                {
+                  "maCauHoi": "63a6c90b0360b205a5893323",
+                  "tieuDe": "Cách thay đổi màu văn bản trên Thanh trạng thái trong iOS"
+                }
+              ],
+              "maLienHe": "132465"
+        }
+    ]
+}
