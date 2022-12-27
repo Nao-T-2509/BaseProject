@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { admin_url, gateway_url } from '../const/url';
+import { admin_url, baseUrlT, gateway_url } from '../const/url';
 
 @Injectable({
   providedIn: 'root'
@@ -51,4 +51,31 @@ export class UserService {
         map((reponse: any) => reponse)
       )
   }
+
+  getAlluser(): Observable<any> {
+    return this.http.get(baseUrlT + '/taikhoan').pipe(
+      map((reponse: any) => reponse)
+    )
+  }
+
+  getDetail(name: any): Observable<any> {
+    return this.http.get(baseUrlT + '/taikhoan?tenDangNhap=' + name ).pipe(
+      map((reponse: any) => reponse)
+    )
+  }
+
+  update(id: any, body: any): Observable<any> {
+    return this.http.put(baseUrlT + '/taikhoan' + "/" + id, body)
+      .pipe(
+        map((reponse: any) => reponse)
+      )
+  }
+
+  delete(id: string): Observable<any> {
+    return this.http.delete(baseUrlT + '/taikhoan' + "/" + id)
+      .pipe(
+        map((reponse: any) => reponse)
+      )
+  }
+
 }

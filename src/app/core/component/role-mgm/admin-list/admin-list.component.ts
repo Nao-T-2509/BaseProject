@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { BlogService } from 'src/app/core/service/blog.service';
+import { QuestionService } from 'src/app/core/service/question.service';
 import { RoleService } from 'src/app/core/service/role.service';
 import { DecentralizationComponent } from '../decentralization/decentralization.component';
+import { ViewAdminListComponent } from './view-admin-list/view-admin-list.component';
 
 @Component({
   selector: 'app-admin-list',
@@ -9,7 +12,8 @@ import { DecentralizationComponent } from '../decentralization/decentralization.
   styleUrls: ['./admin-list.component.scss']
 })
 export class AdminListComponent implements OnInit {
-  roleList: any;
+  QSList: any;
+  BlogList: any;
 
   page = 0;
   size = 10;
@@ -40,19 +44,17 @@ export class AdminListComponent implements OnInit {
   changeSize() {
     this.getDetailPage(this.page);
   }
-  constructor(private dialog: MatDialog, private roleService: RoleService) { }
+  constructor(private dialog: MatDialog, private roleService: RoleService, private questionService: QuestionService, private blogService: BlogService) { }
 
   ngOnInit(): void {
-    this.roleList = [
-      {
-        stt: '1',
-        user: 'ADMIN',
-        nameAdmin: 'ADMIN',
-        role: 'Tổng',
-        active: true,
-        note: 'aaaaa'
-      }
-    ]
+    this.questionService.getAllQuetion().subscribe(data => {
+      this.QSList = data;
+      // console.log(data);
+    })
+    this.blogService.getAllBlog().subscribe(data => {
+      this.BlogList = data;
+      // console.log(data);
+    })
     this.roleService.searchRoleList(this.page, this.size).subscribe(
       data => {}
     )
@@ -63,5 +65,22 @@ export class AdminListComponent implements OnInit {
       width: '90%',
       height: '100%'
     })
+  }
+
+  viewUpdate(id: any){
+    const dialogRef = this.dialog.open(ViewAdminListComponent, {
+      width: '70%',
+      height: 'auto',
+      data: {
+        id: id,
+      }
+    });
+    dialogRef.afterClosed().subscribe(
+      data => {
+        if (data?.isCloseDialog === true) {
+          // this.searchListMember();
+        }
+      }
+    )
   }
 }

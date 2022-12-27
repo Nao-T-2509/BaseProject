@@ -1,6 +1,6 @@
 <div class="mb-2 text-xl flex flex-row justify-between items-end">
-    <div *ngIf="!isEditMode">Thông tin chi tiết người dùng</div>
-    <div *ngIf="isEditMode">Chỉnh sửa thông tin người dùng</div>
+    <div *ngIf="!isEditMode">Thông tin chi tiết</div>
+    <div *ngIf="isEditMode">Chỉnh sửa thông tin</div>
     <div class="flex">
         <!-- <button *ngIf="isEditMode && active == 'true'" type="button"
         class="text-blue-700 hover:text-white border border-blue-700 
@@ -23,33 +23,42 @@
     <div class="mt-4 flex flex-col">
         <div class="flex grow">
             <mat-form-field class="mr-4 grow w-1/3" appearance="outline">
-                <mat-label>Họ và tên</mat-label>
-                <input matInput [disabled]="!isEditMode" [value]="user?.hoVaTen" name="hoVaTen" ngModel>
+                <mat-label>Tiêu đề</mat-label>
+                <input matInput [disabled]="!isEditMode" [value]="user?.tieuDe" name="tieuDe" ngModel>
             </mat-form-field>
             <mat-form-field class="grow w-1/3" appearance="outline">
-                <mat-label>Username</mat-label>
-                <input matInput [disabled]="!isEditMode" [value]="user?.tenDangNhap" name="tenDangNhap" ngModel >
+                <mat-label>Tags</mat-label>
+                <input matInput [disabled]="!isEditMode" [value]="user?.tag" name="tag" ngModel >
             </mat-form-field>
         </div>
         <div class="flex grow">
             <mat-form-field class="mr-4 grow w-1/3" appearance="outline">
-                <mat-label>Liên Hệ</mat-label>
-                <input matInput [disabled]="!isEditMode" [value]="user?.maLienHe" name="maLienHe" ngModel >
+                <mat-label>Ngày đăng</mat-label>
+                <input matInput [disabled]="!isEditMode" [value]="user?.ngayDang" name="ngayDang" ngModel >
             </mat-form-field>
             <mat-form-field class="grow w-1/3" appearance="outline">
-                <mat-label>Mô tả</mat-label>
-                <input matInput [disabled]="!isEditMode" [value]="user?.moTa" name="moTa" ngModel>
+                <mat-label>Nội dung</mat-label>
+                <input matInput [disabled]="!isEditMode" [value]="user?.noiDung" name="noiDung" ngModel>
             </mat-form-field>
         </div>
         <div class="flex grow">
             <mat-form-field class="mr-4 grow w-1/3" appearance="outline">
-                <mat-label>Ảnh đại diện</mat-label>
-                <input [disabled]="!isEditMode" matInput [value]="user?.anhDaiDien" name="anhDaiDien" ngModel>
+                <mat-label>lượt xem</mat-label>
+                <input matInput [disabled]="!isEditMode" [value]="user?.luotXem" name="luotXem" ngModel >
             </mat-form-field>
             <mat-form-field class="grow w-1/3" appearance="outline">
-                <mat-label>Người dùng</mat-label>
-                <input disabled *ngIf="user?.laNguoiDung == true" matInput [value]="true">
-                <input disabled *ngIf="user?.laNguoiDung == false" matInput [value]="false">
+                <mat-label>Lượt thích</mat-label>
+                <input matInput [disabled]="!isEditMode" [value]="user?.luotThich" name="luotThich" ngModel>
+            </mat-form-field>
+        </div>
+        <div class="flex grow">
+            <mat-form-field class="mr-4 grow w-1/3" appearance="outline">
+                <mat-label>Báo cáo</mat-label>
+                <input [disabled]="!isEditMode" matInput [value]="user?.baoCao" name="baoCao" ngModel>
+            </mat-form-field>
+            <mat-form-field class="grow w-1/3" appearance="outline">
+                <mat-label>Danh sách bình luận</mat-label>
+                <input [disabled]="!isEditMode" matInput [value]="user?.danhSachBinhLuan.length" name="danhSachBinhLuan" ngModel>
             </mat-form-field>
         </div>
         <!-- <div class="flex grow">

@@ -1,12 +1,12 @@
-<p class="tracking-widest text-center">Danh sách vai trò admin</p>
+<p class="tracking-widest text-center">Danh sách câu hỏi</p>
 <mat-divider></mat-divider>
 
 <!-- button add role -->
-<button type="button" (click)="addRole()" class="mt-4 py-2 px-3 text-xs font-medium text-center text-white
+<!-- <button type="button" (click)="addRole()" class="mt-4 py-2 px-3 text-xs font-medium text-center text-white
  bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none
   focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
   Tạo mới vai trò
-</button>
+</button> -->
 
 <!-- table -->
 <div class="mt-4 relative sm:rounded-lg" style="font-size: 12px;">
@@ -14,57 +14,184 @@
         <thead class="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="py-3 px-6 stop-stretching">
-                    STT
+                    Id
                 </th>
                 <th scope="col" class="py-3 px-6 stop-stretching">
-                    User
+                    Tiêu đề
                 </th>
                 <th scope="col" class="py-3 px-6 stop-stretching">
-                    Tên Admin
+                    Tag
                 </th>
                 <th scope="col" class="py-3 px-6 stop-stretching">
-                    Role
+                    Báo cáo
                 </th>
                 <th scope="col" class="py-3 px-6 stop-stretching">
-                    Active
+                    Ngày đăng
                 </th>
                 <th scope="col" class="py-3 px-6 stop-stretching">
-                    Note
+                    Lượt xem
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Lượt thích
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Bình luận
                 </th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of roleList"
+            <tr *ngFor="let item of QSList" (click)="viewUpdate(item.id)"
                 class="cursor-pointer bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="py-4 px-6 stop-stretching">
-                    {{item.stt || 'No-data'}}
+                    {{item.id || 'No-data'}}
                 </td>
                 <td class="py-4 px-6 stop-stretching">
-                    {{item.user || 'No-data'}}
+                    {{item.tieuDe || 'No-data'}}
                 </td>
                 <td class="py-4 px-6 stop-stretching">
-                    {{item.nameAdmin || 'No-data'}}
-
+                    {{item.tag || 'No-data'}}
+                </td>
+                <td class="py-4 px-6 stop-stretching ">
+                    {{item.baoCao || 'No-data'}}
+                </td>
+                <td class="py-4 px-6 stop-stretching ">
+                    {{item.ngayDang || 'No-data'}}
                 </td>
                 <td class="py-4 px-6 stop-stretching">
-                    {{item.role || 'No-data'}}
+                    {{item.luotXem || 'No-data'}}
                 </td>
                 <td class="py-4 px-6 stop-stretching">
-                    <mat-checkbox [checked]="item.active"></mat-checkbox>
+                    {{item.luotThich || 'No-data'}}
                 </td>
                 <td class="py-4 px-6 stop-stretching">
-                    {{item.note || 'No-data'}}
+                    {{item.danhSachBinhLuan.length || 'No-data'}}
                 </td>
             </tr>
         </tbody>
     </table>
     <nav class="flex justify-between items-center pt-4" aria-label="Table navigation">
-        <span class="font-normal text-gray-500 dark:text-gray-400">
+        <!-- <span class="font-normal text-gray-500 dark:text-gray-400">
             <span class="fw-bold" style="margin-right: 5px;">Hiển thị</span>
                 <input type="number" value='0' style="width: 70px; border: unset; padding: unset; padding-left: 20px;"
                     min="1" max="{{totalCount}}" value="{{size}}" [(ngModel)]="size" (change)="changeSize()"> trên {{totalCount}}
             <span class="fw-bold" >kết quả</span>
-        </span>
+        </span> -->
+        <ul class="inline-flex items-center -space-x-px">
+            <li *ngIf="page != 1 && array.length > 0">
+                <a  (click)="previousPage()"
+                    class="block py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <span class="sr-only">Previous</span>
+                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </li>
+            <li *ngFor="let i of array ">
+                <a routerLinkActive="fold-bold" (click)="getDetailPage(i); pageActive = i" [class.text-blue-600]="page === i" [class.font-bold]="page === i" class="cursor-pointer py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{i}}</a>
+            </li>
+            <li *ngIf="page != array.length && array.length > 0">
+                <a  (click)="nextPage()"
+                    class="block py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <span class="sr-only">Next</span>
+                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<p class="tracking-widest text-center">Danh sách blog</p>
+<mat-divider></mat-divider>
+
+<!-- button add role -->
+<!-- <button type="button" (click)="addRole()" class="mt-4 py-2 px-3 text-xs font-medium text-center text-white
+ bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none
+  focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+  Tạo mới vai trò
+</button> -->
+
+<!-- table -->
+<div class="mt-4 relative sm:rounded-lg" style="font-size: 12px;">
+    <table class="table-auto w-full text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Id
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Tiêu đề
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Tag
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Báo cáo
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Ngày đăng
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Lượt xem
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Lượt thích
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Bình luận
+                </th>
+                <th scope="col" class="py-3 px-6 stop-stretching">
+                    Bài được duyệt
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of BlogList"
+                class="cursor-pointer bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="py-4 px-6 stop-stretching">
+                    {{item.id || 'No-data'}}
+                </td>
+                <td class="py-4 px-6 stop-stretching">
+                    {{item.tieuDe || 'No-data'}}
+                </td>
+                <td class="py-4 px-6 stop-stretching">
+                    {{item.tag || 'No-data'}}
+                </td>
+                <td class="py-4 px-6 stop-stretching ">
+                    {{item.baoCao || 'No-data'}}
+                </td>
+                <td class="py-4 px-6 stop-stretching ">
+                    {{item.ngayDang || 'No-data'}}
+                </td>
+                <td class="py-4 px-6 stop-stretching">
+                    {{item.luotXem || 'No-data'}}
+                </td>
+                <td class="py-4 px-6 stop-stretching">
+                    {{item.luotThich || 'No-data'}}
+                </td>
+                <td class="py-4 px-6 stop-stretching">
+                    {{item.binhLuan.length || 'No-data'}}
+                </td>
+                <td class="py-4 px-6 stop-stretching">
+                    {{item.baiDuocDuyet || 'No-data'}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav class="flex justify-between items-center pt-4" aria-label="Table navigation">
+        <!-- <span class="font-normal text-gray-500 dark:text-gray-400">
+            <span class="fw-bold" style="margin-right: 5px;">Hiển thị</span>
+                <input type="number" value='0' style="width: 70px; border: unset; padding: unset; padding-left: 20px;"
+                    min="1" max="{{totalCount}}" value="{{size}}" [(ngModel)]="size" (change)="changeSize()"> trên {{totalCount}}
+            <span class="fw-bold" >kết quả</span>
+        </span> -->
         <ul class="inline-flex items-center -space-x-px">
             <li *ngIf="page != 1 && array.length > 0">
                 <a  (click)="previousPage()"

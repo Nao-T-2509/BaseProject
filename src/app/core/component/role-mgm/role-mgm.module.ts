@@ -5,6 +5,8 @@ import { DecentralizationComponent } from './decentralization/decentralization.c
 import { RouterModule, Routes } from '@angular/router';
 import { RoleMgmComponent } from './role-mgm.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ViewAdminListComponent } from './admin-list/view-admin-list/view-admin-list.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const roleRoutes: Routes = [
   {
@@ -32,15 +34,18 @@ const roleRoutes: Routes = [
   declarations: [
     AdminListComponent,
     DecentralizationComponent,
-    RoleMgmComponent
+    RoleMgmComponent,
+    ViewAdminListComponent
   ],
   imports: [
+    MatSnackBarModule,
     CommonModule,
     RouterModule.forChild(roleRoutes),
     SharedModule
   ],
   exports: [
     AdminListComponent,
+    ViewAdminListComponent,
     DecentralizationComponent
   ]
 })

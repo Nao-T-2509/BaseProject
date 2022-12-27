@@ -32,13 +32,13 @@
       class="cursor-pointer flex flex-row w-full h-10 hover:bg-opacity-10 hover:bg-black py-3 rounded-md items-center justify-center poiter"
       (click)="rolemenu=!rolemenu">
       <i class="fa-solid fa-person-circle-question fa-lg px-2"></i>
-      <span *ngIf="item == 'item'" class="w-4/5">Quản lý vai trò</span>
+      <span *ngIf="item == 'item'" class="w-4/5">Quản lý B&Q</span>
     </li>
     <ul *ngIf="rolemenu" class="h-max w-48 ml-10">
       <li>
         <div [routerLink]="['./role/adminList']" routerLinkActive="active"
           class="cursor-pointer flex items-center p-2 pl-11 w-full text-gray-900 rounded-lg transition duration-75 group hover:bg-opacity-10 hover:bg-black dark:text-white dark:hover:bg-gray-700">
-          Danh sách vai trò ADMIN</div>
+          Danh sách câu hỏi và blog</div>
       </li>
     </ul>
     <!-- <li [ngClass]="item" [routerLink]="['/admin/pages/unlockTransaction']" routerLinkActive="active"

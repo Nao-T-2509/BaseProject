@@ -6,37 +6,36 @@ import { baseUrlT } from '../const/url';
 @Injectable({
     providedIn: 'root'
   })
-  export class QuestionService {
+  export class BlogService {
     constructor(private http: HttpClient) { }
   
-    getAllQuetion(): Observable<any> {
-      return this.http.get(baseUrlT + '/questions')
+    getAllBlog(): Observable<any> {
+      return this.http.get(baseUrlT + '/blogs')
         .pipe(
           map((reponse: any) => reponse)
         )
     }
 
-    getQuestioDetail(id: any) : Observable<any> {
-      return this.http.get(baseUrlT + '/questions?id=' + id).pipe(
-        map((reponse: any) => reponse))
+    getBlogDetail(id: any) : Observable<any> {
+      return this.http.get(baseUrlT + '/blogs?id=' + id)
     }
   
     create(body: any): Observable<any> {
-        return this.http.post(baseUrlT + '/questions', body)
+        return this.http.post(baseUrlT + '/blogs', body)
           .pipe(
             map((reponse: any) => reponse)
           )
       }
 
     update(id: any, body: any): Observable<any> {
-      return this.http.put(baseUrlT + '/questions' + "/" + id, body)
+      return this.http.put(baseUrlT + '/blogs' + "/" + id, body)
         .pipe(
           map((reponse: any) => reponse)
         )
     }
 
     delete(id: string): Observable<any> {
-        return this.http.delete(baseUrlT + '/questions' + "/" + id)
+        return this.http.delete(baseUrlT + '/blogs' + "/" + id)
           .pipe(
             map((reponse: any) => reponse)
           )
@@ -44,7 +43,7 @@ import { baseUrlT } from '../const/url';
 
       searchByTitle(title: string): Observable<any> {
         const keyword = title.trim();
-        return this.http.get(baseUrlT + '/questions/' + "/tieuDe_like=" + keyword)
+        return this.http.get(baseUrlT + '/blogs/' + "/tieuDe_like=" + keyword)
           .pipe(
             map((reponse: any) => reponse)
           )
