@@ -61,6 +61,16 @@
                 <input [disabled]="!isEditMode" matInput [value]="user?.danhSachBinhLuan.length" name="danhSachBinhLuan" ngModel>
             </mat-form-field>
         </div>
+        <div class="flex grow" *ngFor="let item of binhluan">
+            <mat-form-field class="mr-4 grow w-1/3" appearance="outline">
+                <mat-label>Nội dung bình luận</mat-label>
+                <input [disabled]="!isEditMode" matInput [(ngModel)]="item.noiDung" name="noiDung" ngModel>
+            </mat-form-field>
+            <mat-form-field class="grow w-1/3" appearance="outline">
+                <mat-label>Ngày bình luận</mat-label>
+                <input [disabled]="!isEditMode" matInput [(ngModel)]="item.ngayBinhLuan" name="ngayBinhLuan" ngModel>
+            </mat-form-field>
+        </div>
         <!-- <div class="flex grow">
             <mat-form-field class="mr-4 grow w-1/3" appearance="outline">
                 <mat-label>Ngày tạo</mat-label>

@@ -16,6 +16,7 @@ import { NotiComponent } from '../../../noti/noti.component';
 export class ViewAdminListComponent implements OnInit {
 
   user: any;
+  binhluan: any;
   active: any;
   rolelist: any = [];
   now = new Date;
@@ -27,12 +28,11 @@ export class ViewAdminListComponent implements OnInit {
   public datepipe: DatePipe, private _snackBar: MatSnackBar, public dialogRef: MatDialogRef<ViewAdminListComponent>, private roleService: RoleService) { }
 
   ngOnInit(): void {
-  console.log(this.data.id);
-
     this.questionService.getQuestioDetail(this.data.id).subscribe(data => {
-      console.log(data);
-      
+      console.log(data[0]);
       this.user = data[0];
+      this.binhluan = data[0].danhSachBinhLuan;
+      console.log(this.binhluan);
       if (data.activated == true) {
         this.active = 'Active'
       }
